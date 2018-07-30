@@ -1,0 +1,104 @@
+==Complete PRD==
+Phase 1 : 
+     Add Hardcoded movie data in jvm cache with below params marked with ph1
+          [   
+    1. movie name 
+    2. movie start cast[Array[Cast[Name , role]]] 
+    3. movie directors [Array[Cast[Name , role]]]
+    4. movie producers [Array[Cast[Name , role]]]
+    5. music directors [Array[Cast[Name , role]]] 
+    6. movie release date
+    7. budget
+    8. gross income 
+    9. verdict
+    10. star-rating rating [Hard coded value not chaging on the bases of customer reviews.]
+   ]    
+
+   User can view movies list.
+   User can check specific movie details along .
+   User can see songs list.
+   User can check song details with lyrics . 
+    
+songs [List[Song[Name , lyrics , rating]]] 
+
+Just to have two microservices with 
+1. spring cloud config server .
+2. Feign
+3. Ribbon 
+4. Eureka 
+5. Zuul
+6. Hystrix
+7. Zipkin
+8. Rabbitmq
+9. 9. Spring Cloud sleuth 
+10. Spring Cloud bus 
+11.Logging 
+12. Property file desgin 
+13 .yaml
+14. Local setup
+15. Docker setup with docker compose . 
+16. google Cloud or other cloud setup.
+
+
+Phase 2 : 
+1. Admin can Add/Update/delete/View Movie Data for a single movie .
+   [   
+    1. movie name 
+    2. movie start cast[Array[Cast[Name , imageUrl , role]]]
+    3. movie directors [Array[Cast[Name , imageUrl , role]]]
+    4. movie producers [Array[Cast[Name , imageUrl , role]]]
+    5. music directors [Array[Cast[Name , imageUrl , role]]] 
+    6. movie release date
+    7. budget
+    8. gross income 
+    9. verdict
+    10. star-rating rating 
+    11.Download Link 
+   ]
+
+2. Admin/User can view movies list.
+3. Admin/User can check specific movie details along with download link .
+4. Admin/User can download a movie or stream a movie .
+5. Admin/User can add reviews for a movie . 
+6. Admin/user can give start rating to movie . 
+7. Admin/User can see songs list.
+8. Admin/User can check song details with lyrics and download link . 
+9. Admin/User can download songs . 
+10.Admin/User can review and start rate a song .   
+
+    reviews [Array[Reveiw[UserName , review]]] 
+    songs [List[Song[Name , lyrics , rating , List[Review] , downloadLink]]]   
+
+1. Mongo DB data storage for files and serve it by rest apis to download or stream . 
+2. Spring security for only admin things . 
+3. Authentication , Authorisation , Aggregation , Rate limit in zuul . 
+4. OAuth2 integration for login . 
+5. Generate start rating as an average value of all users start rating .
+6. Swagger doc to be accesible by internals only .  
+
+
+
+
+
+  
+
+   
+ 
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+ 
+      
+
+
