@@ -80,3 +80,8 @@ Phase 2 :
 4. OAuth2 integration for login . 
 5. Generate start rating as an average value of all users start rating .
 6. Swagger doc to be accesible by internals only .  
+
+Phase 3: 
+1. To Use ELK stack 
+2. To deploy in kubernetes in local in yatra style not eureka feign ribbon zuul style . 
+
