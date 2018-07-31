@@ -30,7 +30,7 @@ Just to have two microservices with
 6. Hystrix
 7. Zipkin
 8. Rabbitmq
-9. 9. Spring Cloud sleuth 
+9. Spring Cloud sleuth 
 10. Spring Cloud bus 
 11.Logging 
 12. Property file desgin 
@@ -69,14 +69,28 @@ Phase 2 :
     reviews [Array[Reveiw[UserName , review]]] 
     songs [List[Song[Name , lyrics , rating , List[Review] , downloadLink]]]   
 
-1. Mongo DB data storage for files and serve it by rest apis to download or stream . 
-2. Spring security for only admin things . 
+1. File system data  storage for files and serve it by rest apis to download or stream . 
+2. Spring security for only admin things .
+3. For uploading vedios and songs in file system use File upload , file extension validation and max size limit  . 
 3. Authentication , Authorisation , Aggregation , Rate limit in zuul . 
 4. OAuth2 integration for login . 
-5. Generate start rating as an average value of all users start rating .
 6. Swagger doc to be accesible by internals only .  
 
+phase 3 : 
+ Java 8
+ Java 9
+ Junit
+ Mockito
 
+Phase 4: 
+ Meanrk
+Mongodb
+elastic search 
+aerospike 
+neo4j
+Rebbitmq
+kafka
+ 
 
 
 
