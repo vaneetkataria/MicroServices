@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +14,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.katariasoft.microservices.movieservice.web.movie.beans.Cast;
 import com.katariasoft.microservices.movieservice.web.movie.beans.MovieResource;
+import com.katariasoft.microservices.movieservice.web.movie.config.DefaultAdultMovie;
+import com.katariasoft.microservices.movieservice.web.movie.config.DefaultArtMovie;
+import com.katariasoft.microservices.movieservice.web.movie.config.DefaultBiopicMovie;
+import com.katariasoft.microservices.movieservice.web.movie.config.DefaultMovie;
+import com.katariasoft.microservices.movieservice.web.movie.config.EnvironmentAwareDefaultActionMovie;
+import com.katariasoft.microservices.movieservice.web.user.config.DefaultSystemUserConfiguration;
 
 @RestController
 public class MovieController {
+
+	@Autowired
+	private DefaultMovie defaultMovie;
+	@Autowired
+	private DefaultArtMovie defaultArtMovie;
+	@Autowired
+	private DefaultAdultMovie defaultActionMovie;
+	@Autowired
+	private EnvironmentAwareDefaultActionMovie environmentAwareDefaultActionMovie;
+	@Autowired
+	private DefaultBiopicMovie defaultBiopicMovie;
+
+	@Autowired
+	private DefaultSystemUserConfiguration defaultUser;
 
 	private static Map<Integer, MovieResource> movies = new HashMap<>();
 	private static List<Cast> starCast = new ArrayList<>();
@@ -44,7 +65,14 @@ public class MovieController {
 
 	@GetMapping("/movies")
 	public ResponseEntity<List<MovieResource>> getAllMovies() {
-		return ResponseEntity.ok().body(Collections.list(Collections.enumeration(movies.values())));
+		List<MovieResource> movieResources = Collections.list(Collections.enumeration(movies.values()));
+		List<Cast> starCast = new ArrayList<>();
+		starCast.add(new Cast(defaultMovie.getActor(), "Actor"));
+		starCast.add(new Cast(defaultMovie.getActoress(), "Actoress"));
+		movieResources.add(new MovieResource(defaultMovie.getId(), defaultMovie.getName(), starCast, null, null, null,
+				defaultMovie.getReleaseDate(), defaultMovie.getBudget(), defaultMovie.getGrossIncome(),
+				defaultMovie.getVerdict(), defaultMovie.getStarRating()));
+		return ResponseEntity.ok().body(movieResources);
 	}
 
 	@GetMapping("/movies/{movieId}")
@@ -52,6 +80,121 @@ public class MovieController {
 		if (!movies.containsKey(movieId))
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.ok().body(movies.get(movieId));
+	}
+
+	@GetMapping("/movies/default")
+	public ResponseEntity<MovieResource> getDefaultMovie() {
+		List<Cast> starCast = new ArrayList<>();
+		starCast.add(new Cast(defaultMovie.getActor(), "Actor"));
+		starCast.add(new Cast(defaultMovie.getActoress(), "Actoress"));
+		return ResponseEntity.ok()
+				.body(new MovieResource(defaultMovie.getId(), defaultMovie.getName(), starCast, null, null, null,
+						defaultMovie.getReleaseDate(), defaultMovie.getBudget(), defaultMovie.getGrossIncome(),
+						defaultMovie.getVerdict(), defaultMovie.getStarRating()));
+	}
+
+	@GetMapping("/movies/art")
+	public ResponseEntity<List<MovieResource>> getAllArtMovies() {
+		List<MovieResource> movieResources = new ArrayList<>();
+		List<Cast> starCast = new ArrayList<>();
+		starCast.add(new Cast(defaultArtMovie.getActor(), "Actor"));
+		starCast.add(new Cast(defaultArtMovie.getActoress(), "Actoress"));
+		movieResources.add(new MovieResource(defaultArtMovie.getId(), defaultArtMovie.getName(), starCast, null, null,
+				null, defaultArtMovie.getReleaseDate(), defaultArtMovie.getBudget(), defaultArtMovie.getGrossIncome(),
+				defaultArtMovie.getVerdict(), defaultArtMovie.getStarRating()));
+		return ResponseEntity.ok().body(movieResources);
+	}
+
+	@GetMapping("/movies/art/default")
+	public ResponseEntity<MovieResource> getDefaultArtMovie() {
+		List<Cast> starCast = new ArrayList<>();
+		starCast.add(new Cast(defaultMovie.getActor(), "Actor"));
+		starCast.add(new Cast(defaultMovie.getActoress(), "Actoress"));
+		return ResponseEntity.ok()
+				.body(new MovieResource(defaultArtMovie.getId(), defaultArtMovie.getName(), starCast, null, null, null,
+						defaultArtMovie.getReleaseDate(), defaultArtMovie.getBudget(), defaultArtMovie.getGrossIncome(),
+						defaultArtMovie.getVerdict(), defaultArtMovie.getStarRating()));
+	}
+
+	@GetMapping("/movies/adult")
+	public ResponseEntity<List<MovieResource>> getAllActionMovies() {
+		List<MovieResource> movieResources = new ArrayList<>();
+		List<Cast> starCast = new ArrayList<>();
+		starCast.add(new Cast(defaultActionMovie.getActor(), "Actor"));
+		starCast.add(new Cast(defaultActionMovie.getActoress(), "Actoress"));
+		movieResources.add(new MovieResource(defaultActionMovie.getId(), defaultActionMovie.getName(), starCast, null,
+				null, null, defaultActionMovie.getReleaseDate(), defaultActionMovie.getBudget(),
+				defaultActionMovie.getGrossIncome(), defaultActionMovie.getVerdict(),
+				defaultActionMovie.getStarRating()));
+		return ResponseEntity.ok().body(movieResources);
+	}
+
+	@GetMapping("/movies/adult/default")
+	public ResponseEntity<MovieResource> getDefaultActionMovie() {
+		List<Cast> starCast = new ArrayList<>();
+		starCast.add(new Cast(defaultActionMovie.getActor(), "Actor"));
+		starCast.add(new Cast(defaultActionMovie.getActoress(), "Actoress"));
+		return ResponseEntity.ok()
+				.body(new MovieResource(defaultActionMovie.getId(), defaultActionMovie.getName(), starCast, null, null,
+						null, defaultActionMovie.getReleaseDate(), defaultActionMovie.getBudget(),
+						defaultActionMovie.getGrossIncome(), defaultActionMovie.getVerdict(),
+						defaultActionMovie.getStarRating()));
+	}
+
+	@GetMapping("/movies/environmentaware/action")
+	public ResponseEntity<List<MovieResource>> getAlleaActionMovies() {
+		List<MovieResource> movieResources = new ArrayList<>();
+		List<Cast> starCast = new ArrayList<>();
+		starCast.add(new Cast(environmentAwareDefaultActionMovie.getActor(), "Actor"));
+		starCast.add(new Cast(environmentAwareDefaultActionMovie.getActoress(), "Actoress"));
+		movieResources.add(new MovieResource(environmentAwareDefaultActionMovie.getId(),
+				environmentAwareDefaultActionMovie.getName(), starCast, null, null, null,
+				environmentAwareDefaultActionMovie.getReleaseDate(), environmentAwareDefaultActionMovie.getBudget(),
+				environmentAwareDefaultActionMovie.getGrossIncome(), environmentAwareDefaultActionMovie.getVerdict(),
+				environmentAwareDefaultActionMovie.getStarRating()));
+		return ResponseEntity.ok().body(movieResources);
+	}
+
+	@GetMapping("/movies/environmentaware/action/default")
+	public ResponseEntity<MovieResource> getDefaulteaActionMovie() {
+		List<Cast> starCast = new ArrayList<>();
+		starCast.add(new Cast(environmentAwareDefaultActionMovie.getActor(), "Actor"));
+		starCast.add(new Cast(environmentAwareDefaultActionMovie.getActoress(), "Actoress"));
+		return ResponseEntity.ok().body(new MovieResource(environmentAwareDefaultActionMovie.getId(),
+				environmentAwareDefaultActionMovie.getName(), starCast, null, null, null,
+				environmentAwareDefaultActionMovie.getReleaseDate(), environmentAwareDefaultActionMovie.getBudget(),
+				environmentAwareDefaultActionMovie.getGrossIncome(), environmentAwareDefaultActionMovie.getVerdict(),
+				environmentAwareDefaultActionMovie.getStarRating()));
+	}
+
+	@GetMapping("/movies/folderenvaware/boipic")
+	public ResponseEntity<List<MovieResource>> getAllBoipicMovies() {
+		List<MovieResource> movieResources = new ArrayList<>();
+		List<Cast> starCast = new ArrayList<>();
+		starCast.add(new Cast(defaultBiopicMovie.getActor(), "Actor"));
+		starCast.add(new Cast(defaultBiopicMovie.getActoress(), "Actoress"));
+		movieResources.add(new MovieResource(defaultBiopicMovie.getId(), defaultBiopicMovie.getName(), starCast, null,
+				null, null, defaultBiopicMovie.getReleaseDate(), defaultBiopicMovie.getBudget(),
+				defaultBiopicMovie.getGrossIncome(), defaultBiopicMovie.getVerdict(),
+				defaultBiopicMovie.getStarRating()));
+		return ResponseEntity.ok().body(movieResources);
+	}
+
+	@GetMapping("/movies/folderenvaware/boipic/default")
+	public ResponseEntity<MovieResource> getDefaultBoipicMovie() {
+		
+		System.out.println(defaultUser.toString());
+		
+		List<Cast> starCast = new ArrayList<>();
+		starCast.add(new Cast(defaultBiopicMovie.getActor(), "Actor"));
+		starCast.add(new Cast(defaultBiopicMovie.getActoress(), "Actoress"));
+		return ResponseEntity.ok()
+				.body(new MovieResource(defaultBiopicMovie.getId(), defaultBiopicMovie.getName(), starCast, null, null,
+						null, defaultBiopicMovie.getReleaseDate(), defaultBiopicMovie.getBudget(),
+						defaultBiopicMovie.getGrossIncome(), defaultBiopicMovie.getVerdict(),
+						defaultBiopicMovie.getStarRating()));
+		
+		
 	}
 
 }
