@@ -1,0 +1,104 @@
+
+server:
+    port : 8100
+   
+   
+---
+movie : 
+    default :
+         id : 0
+         name: Dil Wale Dulhania Le jaenge
+         actor: shahrukh khan
+         actress : Kajol
+         releaseDate: 01-Jan-2000
+         budget: 50Cr
+         grossIncome: 400cr
+         verdict: Super Duper Hit
+         starRating: 45
+
+---
+movie: 
+   art: 
+      default: 
+            id: -1
+            name: Kamasutra
+            actor: Kamdev
+            actress: Kajol
+            releaseDate: 01-Jan-2018
+            budget: 50Cr
+            grossIncome: 400cr
+            verdict: Super Duper Hit
+            starRating: 10 
+---
+
+user: 
+    goodName: Sahil
+    clazz: 10th
+    subjects: 
+              Hindi
+              Eng
+              Maths
+              Science
+              SST
+              GEO
+              GEO1
+              GEO2
+    projects:
+               project1: PRJ302
+               project2: PRJ303
+               project3: PRJ304
+               project4: PRJ305
+               project5: PRJ306
+               project6: PRJ307
+    credentials:
+               userName: userName
+               passWord: password
+    address:   Main Street USA
+    favourite:
+               super-hero: ironman
+               music_director: Downey Jr.
+               apperalBrand: Flying Machine
+    favouriteMap:
+               old:
+                  super-hero: superman
+                  music_director: David
+                  apperalBrand: Pepe
+               new:
+                  super-hero: ironman
+                  music_director: Downey Jr.
+                  apperalBrand: Flying Machine
+    
+    contacts:
+             - number: 8742910240
+               mail:  vaneet.kumar@yatra.com
+             - number:  8742910241
+               mail:  vaneet1.kumar@yatra.com
+  
+ 
+---
+    
+    redis :
+        host : 189.90.89.70
+        port : 7890
+        password: vaneet   
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

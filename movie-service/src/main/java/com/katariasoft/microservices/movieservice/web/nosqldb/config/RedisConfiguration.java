@@ -10,14 +10,14 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 @Configuration
-@PropertySource("classpath:/properties/nosqldb/redis/redisConnection_${environment}.properties")
+//@PropertySource("classpath:/properties/nosqldb/redis/redisConnection_${environment}.properties")
 @ConfigurationProperties(prefix = "redis")
 public class RedisConfiguration {
 
 	@Autowired
 	private Environment environment;
 
-	// @Value("${redis.host}")
+	//@Value("${redis.host}")
 	private String host;
 
 	private String port;
