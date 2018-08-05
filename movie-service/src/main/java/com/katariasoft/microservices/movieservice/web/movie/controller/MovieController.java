@@ -35,9 +35,6 @@ public class MovieController {
 	@Autowired
 	private DefaultBiopicMovie defaultBiopicMovie;
 
-	@Autowired
-	private DefaultSystemUserConfiguration defaultUser;
-
 	private static Map<Integer, MovieResource> movies = new HashMap<>();
 	private static List<Cast> starCast = new ArrayList<>();
 	private static List<Cast> directors = new ArrayList<>();
@@ -182,9 +179,7 @@ public class MovieController {
 
 	@GetMapping("/movies/folderenvaware/boipic/default")
 	public ResponseEntity<MovieResource> getDefaultBoipicMovie() {
-		
-		System.out.println(defaultUser.toString());
-		
+
 		List<Cast> starCast = new ArrayList<>();
 		starCast.add(new Cast(defaultBiopicMovie.getActor(), "Actor"));
 		starCast.add(new Cast(defaultBiopicMovie.getActoress(), "Actoress"));
@@ -193,8 +188,7 @@ public class MovieController {
 						null, defaultBiopicMovie.getReleaseDate(), defaultBiopicMovie.getBudget(),
 						defaultBiopicMovie.getGrossIncome(), defaultBiopicMovie.getVerdict(),
 						defaultBiopicMovie.getStarRating()));
-		
-		
+
 	}
 
 }

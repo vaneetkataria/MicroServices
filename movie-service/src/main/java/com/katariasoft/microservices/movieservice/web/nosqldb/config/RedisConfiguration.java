@@ -4,31 +4,31 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 @Configuration
 @PropertySource("classpath:/properties/nosqldb/redis/redisConnection_${environment}.properties")
+@ConfigurationProperties(prefix = "redis")
 public class RedisConfiguration {
 
 	@Autowired
 	private Environment environment;
 
-	@Value("${redis.host}")
+	// @Value("${redis.host}")
 	private String host;
 
 	private String port;
 
 	private String password;
 
-	@PostConstruct
-	public void initProperties() {
-		port = environment.getProperty("redis.port");
-		password = environment.getProperty("redis.password");
-	}
-
-	
+	/*
+	 * @PostConstruct public void initProperties() { port =
+	 * environment.getProperty("redis.port"); password =
+	 * environment.getProperty("redis.password"); }
+	 */
 
 	public String getHost() {
 		return host;
@@ -51,5 +51,7 @@ public class RedisConfiguration {
 	}
 
 	public void setPassword(String password) {
+		this.password = password;
 	}
+
 }

@@ -3,6 +3,7 @@ package com.katariasoft.microservices.movieservice.web.soap.config.hotel;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -11,9 +12,10 @@ import com.katariasoft.microservices.movieservice.web.soap.config.WebServiceConf
 
 @Configuration
 @PropertySource("classpath:/properties/soap/${environment}/HotelService.properties")
+@ConfigurationProperties(prefix = "hotelwebservice")
 public class HotelWebServiceConfiguration extends WebServiceConfigurationTemplate {
 
-	@Autowired
+	/*@Autowired
 	private Environment environment;
 
 	@PostConstruct
@@ -26,5 +28,5 @@ public class HotelWebServiceConfiguration extends WebServiceConfigurationTemplat
 		logXml = Boolean.parseBoolean(environment.getProperty("hotelwebservice.logXml"));
 		soapActionHeaderUri = environment.getProperty("hotelwebservice.soapActionHeaderUri");
 	}
-
+*/
 }

@@ -1,6 +1,6 @@
 package com.katariasoft.microservices.movieservice.web.user.config;
 
-public class Credenetials {
+public class Credentials {
 
 	private String userName;
 	private String passWord;
@@ -19,6 +19,11 @@ public class Credenetials {
 
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
+	}
+
+	@Override
+	public String toString() {
+		return "Credenetials [userName=" + userName + ", passWord=" + passWord + "]";
 	}
 
 }
