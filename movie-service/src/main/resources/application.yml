@@ -1,3 +1,7 @@
+spring:
+    profiles:
+      active: dev
+      
 
 server:
     port : 8100
@@ -32,7 +36,7 @@ movie:
 ---
 
 user: 
-    goodName: Sahil from default profile
+    goodName: Sahil from default profile 11
     clazz: 10th
     subjects: 
               - Hindi
@@ -74,7 +78,14 @@ user:
              - number:  8742910241
                mail:  vaneet1.kumar@yatra.com
   
- 
+--- 
+
+redis:
+              host : 189.90.89.70 From application.yml profile
+              port : 7890
+              password: vaneet
+              
+               
 ---
 
     spring:
@@ -88,10 +99,11 @@ user:
     spring:
       profiles: dev
     redis:
-              host : 189.90.89.70 From dev profile
+              host : 189.90.89.70 From dev profile 1
               port : 7890
               password: vaneet
----          
+---  
+        
                  
               
 
