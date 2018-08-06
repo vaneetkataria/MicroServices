@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 // If this is not defined default user prroperties will be picked up from
 // application.properties
-//@PropertySource(value = "classpath:/properties/user/defaultUser.properties")
+@PropertySource(value = "classpath:/properties/user/defaultUser.properties")
 @ConfigurationProperties(prefix = "user")
 public class DefaultSystemUserConfiguration {
 

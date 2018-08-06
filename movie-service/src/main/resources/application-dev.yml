@@ -33,7 +33,7 @@ movie:
 ---
 
 user: 
-    goodName: Sahil from default profile
+    goodName: Sahil from dev profile
     clazz: 10th
     subjects: 
               - Hindi
@@ -80,7 +80,7 @@ user:
     
     redis :
     
-        host : 189.90.89.70 From default profile
+        host : 189.90.89.70 from dev profile
         port : 7890
         password: vaneet   
     
