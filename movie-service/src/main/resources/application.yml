@@ -1,5 +1,4 @@
 
-
 server:
     port : 8100
    
@@ -77,12 +76,28 @@ user:
   
  
 ---
+
+    spring:
+      profiles: prod
+    redis:
+              host : 189.90.89.70 From prod profile
+              port : 7890
+              password: vaneet
+---              
+              
+    spring:
+      profiles: dev
+    redis:
+              host : 189.90.89.70 From dev profile
+              port : 7890
+              password: vaneet
+---          
+                 
+              
+
+              
     
-    redis :
-    
-        host : 189.90.89.70 From default profile
-        port : 7890
-        password: vaneet   
+       
     
 
 

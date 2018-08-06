@@ -78,9 +78,10 @@ user:
  
 ---
     
+    
     redis :
     
-        host : 189.90.89.70 from dev profile
+        host : 189.90.89.70 from dev single profile
         port : 7890
         password: vaneet   
     

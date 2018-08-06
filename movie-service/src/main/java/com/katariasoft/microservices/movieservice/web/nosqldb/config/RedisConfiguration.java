@@ -10,6 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 @Configuration
+//@PropertySource("classpath:/properties/nosqldb/redis/redisConnection_${environment}.properties")
 @PropertySource("classpath:/properties/nosqldb/redis/redisConnection_${spring.profiles.active}.properties")
 @ConfigurationProperties(prefix = "redis")
 public class RedisConfiguration {
