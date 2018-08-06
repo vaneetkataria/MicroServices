@@ -7,10 +7,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
 
 import com.katariasoft.microservices.movieservice.web.soap.config.WebServiceConfigurationTemplate;
 
-@Configuration
+@Component
 @PropertySource("classpath:/properties/soap/${environment}/FlightService.properties")
 @ConfigurationProperties(prefix = "flightwebservice")
 public class FlightWebServiceConfiguration extends WebServiceConfigurationTemplate {
