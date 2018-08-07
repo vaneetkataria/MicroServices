@@ -95,7 +95,7 @@ public class MovieController {
 		List<MovieResource> movieResources = new ArrayList<>();
 		List<Cast> starCast = new ArrayList<>();
 		starCast.add(new Cast(defaultArtMovie.getActor(), "Actor"));
-		starCast.add(new Cast(defaultArtMovie.getActoress(), "Actoress"));
+		starCast.add(new Cast(defaultArtMovie.getActress(), "Actoress"));
 		movieResources.add(new MovieResource(defaultArtMovie.getId(), defaultArtMovie.getName(), starCast, null, null,
 				null, defaultArtMovie.getReleaseDate(), defaultArtMovie.getBudget(), defaultArtMovie.getGrossIncome(),
 				defaultArtMovie.getVerdict(), defaultArtMovie.getStarRating()));
@@ -105,8 +105,8 @@ public class MovieController {
 	@GetMapping("/movies/art/default")
 	public ResponseEntity<MovieResource> getDefaultArtMovie() {
 		List<Cast> starCast = new ArrayList<>();
-		starCast.add(new Cast(defaultMovie.getActor(), "Actor"));
-		starCast.add(new Cast(defaultMovie.getActoress(), "Actoress"));
+		starCast.add(new Cast(defaultArtMovie.getActor(), "Actor"));
+		starCast.add(new Cast(defaultArtMovie.getActress(), "Actoress"));
 		return ResponseEntity.ok()
 				.body(new MovieResource(defaultArtMovie.getId(), defaultArtMovie.getName(), starCast, null, null, null,
 						defaultArtMovie.getReleaseDate(), defaultArtMovie.getBudget(), defaultArtMovie.getGrossIncome(),
