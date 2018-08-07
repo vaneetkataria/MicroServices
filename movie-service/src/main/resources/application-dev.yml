@@ -15,7 +15,7 @@ movie :
          budget: 50Cr
          grossIncome: 400cr
          verdict: Super Duper Hit
-         starRating: 45
+         starRating: 46
 
 ---
 movie: 

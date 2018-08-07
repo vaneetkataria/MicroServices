@@ -12,7 +12,6 @@ server:
 ---
 movie : 
     default :
-         id : 0
          name: Dil Wale Dulhania Le jaenge
          actor: shahrukh khan
          actress : Kajol
@@ -20,7 +19,7 @@ movie :
          budget: 50Cr
          grossIncome: 400cr
          verdict: Super Duper Hit
-         starRating: 45
+         
 
 ---
 movie: 
