@@ -1,12 +1,19 @@
 spring:
-  profiles:
-    active: dev
-  cloud:   
-     config: 
-         uri: http://localhost:8200
-
+   profiles:
+      active: dev
       
-    
-    
- 
-    
+---     
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8256
+      fail-fast: false
+
+
+---
+spring:
+   profiles: dev
+   cloud:   
+      config: 
+         uri: http://localhost:8200

@@ -2,9 +2,9 @@ spring:
     application:
       name: movie-service 
     profiles:
-      active: dev
+        active: dev
       
-
+---
 server:
     port : 8100
    
@@ -12,6 +12,7 @@ server:
 ---
 movie : 
     default :
+         id: -1
          name: Dil Wale Dulhania Le jaenge
          actor: shahrukh khan
          actress : Kajol
@@ -19,6 +20,7 @@ movie :
          budget: 50Cr
          grossIncome: 400cr
          verdict: Super Duper Hit
+         starRating: 10 
          
 
 ---
