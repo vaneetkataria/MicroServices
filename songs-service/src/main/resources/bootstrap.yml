@@ -1,0 +1,26 @@
+spring:
+  profiles:
+     active: dev
+  application:
+    name: songs-service
+    
+---
+
+spring:
+   profiles: dev
+   cloud:
+    config:
+       uri: http://localhost:8200
+       fail-fast: false
+       
+---
+
+spring:
+   profiles: prod
+   cloud:
+    config:
+       uri: http://localhost:8218
+       fail-fast: false       
+   
+    
+    

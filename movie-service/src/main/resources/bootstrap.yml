@@ -17,3 +17,4 @@ spring:
    cloud:   
       config: 
          uri: http://localhost:8200
+         fail-fast: false

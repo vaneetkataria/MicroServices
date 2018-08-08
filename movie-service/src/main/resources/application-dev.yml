@@ -7,29 +7,29 @@ server:
 ---
 movie : 
     default :
-         id : 0
-         name: Dil Wale Dulhania Le jaenge
-         actor: shahrukh khan
-         actress : Kajol
+         id : 500
+         name: Dil Wale Dulhania Le jaenge500
+         actor: shahrukh khan500
+         actress : Kajol500
          releaseDate: 01-Jan-2000
-         budget: 50Cr
-         grossIncome: 400cr
-         verdict: Super Duper Hit
-         starRating: 46
+         budget: 50Cr500
+         grossIncome: 400cr500
+         verdict: Super Duper Hit500
+         starRating: 46500
 
 ---
 movie: 
    art: 
       default: 
-            id: -1
-            name: Kamasutra
-            actor: Kamdev
-            actress: Kajol
-            releaseDate: 01-Jan-2018
-            budget: 50Cr
-            grossIncome: 400cr
-            verdict: Super Duper Hit
-            starRating: 10 
+            id: -155
+            name: Kamasutra55
+            actor: Kamdev55
+            actress: Kajol55
+            releaseDate: 01-Jan-201855
+            budget: 50Cr55
+            grossIncome: 400cr55
+            verdict: Super Duper Hit55
+            starRating: 1055
 ---
 
 user: 
