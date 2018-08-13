@@ -1,7 +1,9 @@
 spring:
-   profiles:
-      active: dev
-      
+  application:
+    name: movie-service
+  profiles:
+    active: dev
+            
 ---     
 
 spring:
@@ -16,5 +18,5 @@ spring:
    profiles: dev
    cloud:   
       config: 
-         uri: http://localhost:8200
+         uri: http://localhost:8300
          fail-fast: false

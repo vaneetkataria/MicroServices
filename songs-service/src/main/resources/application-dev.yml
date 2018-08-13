@@ -1,21 +1,18 @@
-spring:
-  profiles:
-     active: dev
-  application:
-    name: songs-service
-  
----
-
-server:
-    port: 8300
-    
----
 
 songs:
    default:
        name: Tujhe Dekha to ye jaana sanam.
        rating : 5
        lyrics: Tujhe Dekha to ye jaana sanam . Pyaar Hota h deewana sanam . Ab yha se kha jaaen hum . Teri baahon me mar jaeen hum .
+ 
+---
+
+     
+
+
+      
+     
+          
            
     
 

@@ -1,9 +1,10 @@
 spring:
-    application:
-      name: movie-service 
-    profiles:
-        active: dev
+  application:
+    name: movie-service
+  profiles:
+    active: dev
       
+     
 ---
 server:
     port : 8100
@@ -36,6 +37,21 @@ movie:
             grossIncome: 400cr
             verdict: Super Duper Hit
             starRating: 10 
+---
+
+movie: 
+   adult: 
+      default: 
+            id: -3
+            name: American Canadian pie
+            actor: Ironmanne
+            actress: IronWoman
+            releaseDate: 01-Jan-2018
+            budget: 50Cr
+            grossIncome: 400cr
+            verdict: Super Duper Hit
+            starRating: 10 
+
 ---
 
 user: 
@@ -106,6 +122,12 @@ redis:
               port : 7890
               password: vaneet
 ---  
+
+
+    
+   
+
+
         
                  
               

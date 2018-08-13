@@ -32,6 +32,21 @@ movie:
             starRating: 1055
 ---
 
+movie: 
+   adult: 
+      default: 
+            id: -3
+            name: American Canadian japani pie
+            actor: Ironmanne japana
+            actress: IronWoman japnaa
+            releaseDate: 11-Jan-2018 
+            budget: 50Cr japan
+            grossIncome: 400cr japan
+            verdict: Super Duper Hit jap[an
+            starRating: 200000000 
+
+---            
+
 user: 
     goodName: Sahil from dev profile yaml
     clazz: 10th
@@ -84,6 +99,16 @@ user:
         host : 189.90.89.70 from dev profile yaml single profile 
         port : 7890
         password: vaneet
+        
+---
+
+eureka:
+  client: 
+     service-url:
+           default-zone: http://localhost:8400
+          
+        
+               
         
         
         
