@@ -1,4 +1,4 @@
-package com.katariasoft.microservices.songsservice.web.songs.beans;
+package com.katariasoft.microservices.movieservice.web.movie.beans;
 
 public class Song {
 
@@ -12,12 +12,11 @@ public class Song {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Song(String name, String rating, String lyrics, String port) {
+	public Song(String name, String rating, String lyrics) {
 		super();
 		this.name = name;
 		this.rating = rating;
 		this.lyrics = lyrics;
-		this.port = port;
 	}
 
 	public String getName() {

@@ -1,6 +1,7 @@
 package com.katariasoft.microservices.songsservice.web.songs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +16,13 @@ public class SongsController {
 	@Autowired
 	private DefaultSong defaultSong;
 
+	@Value("${server.port}")
+	private String port;
+
 	@GetMapping(path = "/songs/default", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Song> getDefaultSong() {
 		return ResponseEntity.ok()
-				.body(new Song(defaultSong.getName(), defaultSong.getRating(), defaultSong.getLyrics()));
+				.body(new Song(defaultSong.getName(), defaultSong.getRating(), defaultSong.getLyrics(), port));
 
 	}
 

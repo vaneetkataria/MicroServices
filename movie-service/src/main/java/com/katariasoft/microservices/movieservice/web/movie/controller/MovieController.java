@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.katariasoft.microservices.movieservice.web.movie.beans.Cast;
 import com.katariasoft.microservices.movieservice.web.movie.beans.MovieResource;
+import com.katariasoft.microservices.movieservice.web.movie.beans.Song;
 import com.katariasoft.microservices.movieservice.web.movie.config.DefaultAdultMovie;
 import com.katariasoft.microservices.movieservice.web.movie.config.DefaultArtMovie;
 import com.katariasoft.microservices.movieservice.web.movie.config.DefaultBiopicMovie;
 import com.katariasoft.microservices.movieservice.web.movie.config.DefaultMovie;
 import com.katariasoft.microservices.movieservice.web.movie.config.EnvironmentAwareDefaultActionMovie;
+import com.katariasoft.microservices.movieservice.web.movie.helper.feign.SongsServiceClient;
 import com.katariasoft.microservices.movieservice.web.user.config.DefaultSystemUserConfiguration;
 
 @RestController
@@ -34,6 +36,8 @@ public class MovieController {
 	private EnvironmentAwareDefaultActionMovie environmentAwareDefaultActionMovie;
 	@Autowired
 	private DefaultBiopicMovie defaultBiopicMovie;
+	@Autowired
+	private SongsServiceClient songsServiceClient;
 
 	private static Map<Integer, MovieResource> movies = new HashMap<>();
 	private static List<Cast> starCast = new ArrayList<>();
@@ -188,6 +192,12 @@ public class MovieController {
 						null, defaultBiopicMovie.getReleaseDate(), defaultBiopicMovie.getBudget(),
 						defaultBiopicMovie.getGrossIncome(), defaultBiopicMovie.getVerdict(),
 						defaultBiopicMovie.getStarRating()));
+
+	}
+
+	@GetMapping("/movies/default/songs/default")
+	public ResponseEntity<Song> getDefaultSongOfDefaultMovie() {
+		return songsServiceClient.getDefaultSong();
 
 	}
 
