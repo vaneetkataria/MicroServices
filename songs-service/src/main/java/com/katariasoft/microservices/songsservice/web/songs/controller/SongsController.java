@@ -21,6 +21,8 @@ public class SongsController {
 
 	@GetMapping(path = "/songs/default", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Song> getDefaultSong() {
+
+		
 		return ResponseEntity.ok()
 				.body(new Song(defaultSong.getName(), defaultSong.getRating(), defaultSong.getLyrics(), port));
 

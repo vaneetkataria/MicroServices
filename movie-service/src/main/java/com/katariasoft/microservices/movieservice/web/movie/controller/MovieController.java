@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.katariasoft.microservices.movieservice.web.movie.beans.Cast;
 import com.katariasoft.microservices.movieservice.web.movie.beans.MovieResource;
@@ -38,6 +39,8 @@ public class MovieController {
 	private DefaultBiopicMovie defaultBiopicMovie;
 	@Autowired
 	private SongsServiceClient songsServiceClient;
+	@Autowired
+	private RestTemplate restTemplate;
 
 	private static Map<Integer, MovieResource> movies = new HashMap<>();
 	private static List<Cast> starCast = new ArrayList<>();
@@ -198,6 +201,12 @@ public class MovieController {
 	@GetMapping("/movies/default/songs/default")
 	public ResponseEntity<Song> getDefaultSongOfDefaultMovie() {
 		return songsServiceClient.getDefaultSong();
+
+	}
+	
+	@GetMapping("/movies/default/songs/default/rest")
+	public ResponseEntity<Song> getDefaultSongOfDefaultMovieRest() {
+		return restTemplate.getForEntity("http://songs-service/songs/default", Song.class);
 
 	}
 
