@@ -6,18 +6,22 @@ public class Song {
 	private String rating;
 	private String lyrics;
 	private String port;
+	private String lyricist;
+	private String singer;
 
 	public Song() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Song(String name, String rating, String lyrics, String port) {
+	public Song(String name, String rating, String lyrics, String port, String singer, String lyricist) {
 		super();
 		this.name = name;
 		this.rating = rating;
 		this.lyrics = lyrics;
 		this.port = port;
+		this.singer = singer;
+		this.lyricist = lyricist;
 	}
 
 	public String getName() {
@@ -50,6 +54,22 @@ public class Song {
 
 	public void setPort(String port) {
 		this.port = port;
+	}
+
+	public String getLyricist() {
+		return lyricist;
+	}
+
+	public void setLyricist(String lyricist) {
+		this.lyricist = lyricist;
+	}
+
+	public String getSinger() {
+		return singer;
+	}
+
+	public void setSinger(String singer) {
+		this.singer = singer;
 	}
 
 }

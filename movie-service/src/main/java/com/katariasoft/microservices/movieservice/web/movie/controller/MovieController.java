@@ -8,8 +8,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -200,13 +205,26 @@ public class MovieController {
 
 	@GetMapping("/movies/default/songs/default")
 	public ResponseEntity<Song> getDefaultSongOfDefaultMovie() {
-		return songsServiceClient.getDefaultSong();
+		return songsServiceClient.getDefaultSong("Javed Akhtar", "Sonu nigam");
 
 	}
-	
+
 	@GetMapping("/movies/default/songs/default/rest")
-	public ResponseEntity<Song> getDefaultSongOfDefaultMovieRest() {
+	public ResponseEntity<Song> postDefaultSongOfDefaultMovieRest() {
+
 		return restTemplate.getForEntity("http://songs-service/songs/default", Song.class);
+
+	}
+
+	@PostMapping("/movies/default/songs/default/rest")
+	public ResponseEntity<Song> postDefaultSongOfDefaultMovieRest(@RequestBody(required = false) Song song) {
+		return restTemplate.postForEntity("http://songs-service/songs", song, Song.class);
+
+	}
+
+	@PutMapping("/movies/default/songs/default/rest")
+	public void putDefaultSongOfDefaultMovieRest(@RequestBody(required = false) Song song) {
+		restTemplate.put("http://songs-service/songs", song);
 
 	}
 

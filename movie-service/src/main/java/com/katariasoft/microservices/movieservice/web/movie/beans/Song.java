@@ -6,6 +6,8 @@ public class Song {
 	private String rating;
 	private String lyrics;
 	private String port;
+	private String singer;
+	private String lyricist;
 
 	public Song() {
 		super();
@@ -49,6 +51,22 @@ public class Song {
 
 	public void setPort(String port) {
 		this.port = port;
+	}
+
+	public String getSinger() {
+		return singer;
+	}
+
+	public void setSinger(String singer) {
+		this.singer = singer;
+	}
+
+	public String getLyricist() {
+		return lyricist;
+	}
+
+	public void setLyricist(String lyricist) {
+		this.lyricist = lyricist;
 	}
 
 }
