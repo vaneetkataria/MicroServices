@@ -1,0 +1,64 @@
+<!--  Logging Configuration . 
+
+1. Appenders are the objects which have responsibility of printing logs . Loggers use
+   appenders to print logs . Console appenders print logs in console and File appenders print logs to a file. 
+2. Loggers are the objects which issue log statements . Consider below scenario . 
+2.1. In Spring Boot there is predefined logback.xml file named base.xml . Once we put logback.xml in spring boot 
+     Our configuration will now be final and base.xml will not be read . 
+2.2. If no appenders and loggers are defined in logback.xml then no logs even spring boot starting logs will not be 
+     printed . As there is not logger for logging defined in xml . \
+2.3. Now suppose we have multiple loggers defined in xml like : 
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %green([%thread]) %highlight(%-10level) %logger{36} - Line No:%line %msg%n
+				</pattern>
+		</encoder>
+	</appender>
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+	</root> 
+     
+  <logger name="com.katariasoft.microservices.movieservice.web.logging" 
+		level="trace"> <appender-ref ref="STDOUT" /> </logger> 
+
+	<logger name="com.katariasoft.microservices.movieservice.web" level="debug"> 
+		<appender-ref ref="STDOUT" /> </logger>
+
+	<logger name="com.katariasoft.microservices.movieservice" level="info"> 
+		<appender-ref ref="STDOUT" /> </logger> 
+
+	<logger name="com.C.microservices" level="warn"> <appender-ref 
+		ref="STDOUT" /> </logger> 
+
+	<logger name="com.katariasoft" level="trace" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<!-- <logger name="com" level="fatal">
+	      <appender-ref ref="STDOUT" />
+	 </logger> 
+	 
+	 Here appender a console appender and a herarichal loggers having various levels defined starting from 
+	 com.katariasoft.microservices.movieservice.web.logging -- trace
+	 com.katariasoft.microservices.movieservice.web -- debug
+	 com.katariasoft.microservices.movieservice -- info
+	 com.katariasoft.microservices -- warn
+	 com.katariasoft -- error
+	 
+	 Here if any class in package com.katariasoft.microservices.movieservice.web.logging create a logger object with package
+	 or class then it can log from trace to error . But com.katariasoft.microservices.movieservice.web can isse loggers 
+	 from debug only no trace allowed . 
+	 
+	 Log level filtration works on the logger only on which command is being issued . On Parent loggers log level 
+	 filtration does not work . 
+	 
+	 Hence if   com.katariasoft.microservices.movieservice.web.logging issues a trace command and all loggers have appenders
+	 then trace log will be printed 7 times means on parent loggers log level filtration will not work . 
+	 
+	 Now The same applies for various jars and packages logging in a project . If no logger of parent logger has been defined 
+	 for any logger created in any package root logger will take care of it . If apecial logger has been defined for this class
+	 or parent package then special logger will filter logs on its own defined level and parent loggers will not filter those logs.
+	 
+	 If Multiple log statements have to be avoided them do not defined appender in this logger or add additivity="false" . 
+ 	 -->
