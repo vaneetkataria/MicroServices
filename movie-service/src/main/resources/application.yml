@@ -3,7 +3,51 @@ spring:
     name: movie-service
   profiles:
     active: dev
-      
+
+---
+#Defining a logging.level for any package creates a logger for this package . This logger will
+#not have any appender . Hence appneder of root logger will be used . Secondly this logger will
+#filter logs on this defined level . If this logger has logging level as trace hence all the log
+#messages will go to root logger and root logger even if having level as info will pring this log
+#as filters will not be executed on parent loggers .       
+#
+#Path will define the path where logging needs to be configured.
+#File will be file name .
+
+#pattern defined for console and file will override defult spring patterns . 
+# In Prod generally console appender is not needed hence define it as empty . 
+
+#
+#
+
+
+spring:
+   profiles: dev   
+loggin:
+  level:
+    com.katariasoft : trace
+  path: ${user.home}/logs/applications/${spring.application.name}
+  file: ${logging.path}/${spring.application.name}.log  
+  pattern:
+    file: "%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n"   
+    console: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
+    
+    
+---
+# Below config is for prod profile which means no console appender will be created . 
+# To have daily rolling polity use logback-spring.xml     
+    
+spring:
+   profiles: prod   
+loggin:
+  level:
+    com.katariasoft : trace
+  path: ${user.home}/logs/applications/${spring.application.name}
+  file: ${logging.path}/${spring.application.name}.log  
+  pattern:
+    file: "%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n"   
+    console: 
+  
      
 ---
 server:
