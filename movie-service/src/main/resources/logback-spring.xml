@@ -21,7 +21,7 @@
         <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %line %msg%n</Pattern>
     </encoder>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-        <fileNamePattern>${user.home}/logs/applications/${MyApplicationName}/archived/log_%d{dd-MM-yyyy}.log</fileNamePattern>
+        <fileNamePattern>${user.home}/logs/applications/${MyApplicationName}/archived/${MyApplicationName}_%d{dd-MM-yyyy-HH}.log</fileNamePattern>
         <maxHistory>10</maxHistory>
         <totalSizeCap>100MB</totalSizeCap>
     </rollingPolicy>
