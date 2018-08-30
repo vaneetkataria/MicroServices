@@ -1,11 +1,17 @@
 package com.katariasoft.microservices.movieservice.web.movie.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +23,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.servlet.support.RequestContext;
 
 import com.katariasoft.microservices.movieservice.web.movie.beans.Cast;
 import com.katariasoft.microservices.movieservice.web.movie.beans.MovieResource;
@@ -72,7 +80,10 @@ public class MovieController {
 
 	}
 
+	private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
+
 	@GetMapping("/movies")
+
 	public ResponseEntity<List<MovieResource>> getAllMovies() {
 		List<MovieResource> movieResources = Collections.list(Collections.enumeration(movies.values()));
 		List<Cast> starCast = new ArrayList<>();
@@ -210,9 +221,13 @@ public class MovieController {
 	}
 
 	@GetMapping("/movies/default/songs/default/rest")
-	public ResponseEntity<Song> postDefaultSongOfDefaultMovieRest() {
+	public ResponseEntity<Song> postDefaultSongOfDefaultMovieRest(HttpServletRequest request) {
 
-		return restTemplate.getForEntity("http://songs-service/songs/default", Song.class);
+		logger.info("Request URI is {}", request.getRequestURI());
+		logger.info("Going to call songs service url to get default song .");
+		ResponseEntity<Song> song = restTemplate.getForEntity("http://songs-service/songs/default", Song.class);
+		logger.info("Returning default song data as {} ", song.getBody());
+		return song;
 
 	}
 

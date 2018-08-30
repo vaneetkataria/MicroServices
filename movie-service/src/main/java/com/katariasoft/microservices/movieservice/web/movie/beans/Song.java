@@ -69,4 +69,10 @@ public class Song {
 		this.lyricist = lyricist;
 	}
 
+	@Override
+	public String toString() {
+		return "Song [name=" + name + ", rating=" + rating + ", lyrics=" + lyrics + ", port=" + port + ", singer="
+				+ singer + ", lyricist=" + lyricist + "]";
+	}
+
 }

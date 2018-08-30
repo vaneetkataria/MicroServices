@@ -16,7 +16,7 @@
     <file>${user.home}/logs/applications/${MyApplicationName}/${MyApplicationName}.log
     </file>
     <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-        <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %line %msg%n</Pattern>
+       <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] [${MyApplicationName} vaneet %X{X-B3-TraceId:-}, %X{X-B3-SpanId:-}, %X{X-Span-Export:-}] %-5level %logger{36} - %line %msg%n</Pattern>
     </encoder>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
         <fileNamePattern>${user.home}/logs/applications/${MyApplicationName}/archived/${MyApplicationName}_%d{dd-MM-yyyy-HH}.log</fileNamePattern>
