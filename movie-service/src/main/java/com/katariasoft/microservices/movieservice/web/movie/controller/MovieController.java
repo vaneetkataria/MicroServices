@@ -1,6 +1,6 @@
 package com.katariasoft.microservices.movieservice.web.movie.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,7 +35,6 @@ import com.katariasoft.microservices.movieservice.web.movie.config.DefaultBiopic
 import com.katariasoft.microservices.movieservice.web.movie.config.DefaultMovie;
 import com.katariasoft.microservices.movieservice.web.movie.config.EnvironmentAwareDefaultActionMovie;
 import com.katariasoft.microservices.movieservice.web.movie.helper.feign.SongsServiceClient;
-import com.katariasoft.microservices.movieservice.web.user.config.DefaultSystemUserConfiguration;
 
 @RestController
 public class MovieController {

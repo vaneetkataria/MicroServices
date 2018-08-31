@@ -20,7 +20,17 @@ spring:
    cloud:
     config:
        uri: http://localhost:8218
-       fail-fast: false       
+       fail-fast: false
+       
+---
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+          
+        
        
 
      
