@@ -6,7 +6,7 @@
 
 # Spring cloud config server
 ## Url : localhost:8300
-## Url to fetch properties : http://localhost:8300/master/movie-service-dev.yml/ , http://localhost:8300/movie-service/dev/masteretflix 
+## Url to fetch properties : http://localhost:8300/master/movie-service-dev.yml/ , http://localhost:8300/movie-service/dev/master
 
 # Netflix eureka naming server
 ## Url : localhost:8761
