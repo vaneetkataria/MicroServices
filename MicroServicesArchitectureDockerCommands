@@ -1,0 +1,36 @@
+sudo docker run -d --hostname centralrabbitmq --name centralrabbitmq --network microservices-architecture-network -p 5772:5672 -p 15772:15672 rabbitmq:3-management
+
+sudo docker rmi -f spring-cloud-config-server:1 
+sudo docker build -t spring-cloud-config-server:1 .
+sudo docker run -p 8300:8300 -it -v ~/docker/mapped-volumes/microServicesArchitecture/spring-cloud-config-server/:/tmp/ --name configServer --network microservices-architecture-network spring-cloud-config-server:1 
+
+
+sudo docker rmi -f netflix-eureka-naming-server:1 
+sudo docker build -t netflix-eureka-naming-server:1 .
+sudo docker run -p 8761:8761 -it -v ~/docker/mapped-volumes/microServicesArchitecture/netflix-eureka-naming-server/:/tmp/ --name namingServer --network microservices-architecture-network netflix-eureka-naming-server:1 
+
+
+sudo docker rmi -f zipkin-server:1 
+sudo docker build -t zipkin-server:1 .
+sudo docker run -p 9411:9411 -it -v ~/docker/mapped-volumes/microServicesArchitecture/zipkin-server/:/tmp/ --name zipkinServer --network microservices-architecture-network zipkin-server:1 
+
+sudo docker rmi -f songs-service:1 
+sudo docker build -t songs-service:1 .
+sudo docker run -p 8200:8200 -it -v ~/docker/mapped-volumes/microServicesArchitecture/songs-service/:/tmp/ -v ~/docker/mapped-volumes/microServicesArchitecture/songs-service/:/root/logs/applications/songs-service/  --name songs-service --network microservices-architecture-network songs-service:1 
+
+sudo docker rmi -f songs-service:2 
+sudo docker build -t songs-service:2 .
+sudo docker run -p 8203:8200 -it -v ~/docker/mapped-volumes/microServicesArchitecture/songs-service/:/tmp/ -v ~/docker/mapped-volumes/microServicesArchitecture/songs-service/:/root/logs/applications/songs-service/  --name songs-service2 --network microservices-architecture-network songs-service:2 
+
+sudo docker rmi -f songs-service:3 
+sudo docker build -t songs-service:3 .
+sudo docker run -p 8205:8200 -it -v ~/docker/mapped-volumes/microServicesArchitecture/songs-service/:/tmp/ -v ~/docker/mapped-volumes/microServicesArchitecture/songs-service/:/root/logs/applications/songs-service/  --name songs-service3 --network microservices-architecture-network songs-service:3 
+
+sudo docker rmi -f movie-service:1 
+sudo docker build -t movie-service:1 .
+sudo docker run -p 8100:8100 -it -v ~/docker/mapped-volumes/microServicesArchitecture/movie-service/:/tmp/ -v ~/docker/mapped-volumes/microServicesArchitecture/movie-service/:/root/logs/applications/movie-service/ --name movie-service --network microservices-architecture-network -e environment=dev movie-service:1 
+
+ 
+
+
+
