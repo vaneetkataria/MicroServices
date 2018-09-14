@@ -9,7 +9,7 @@ spring:
 spring:
   cloud:
     config:
-      uri: http://localhost:8256
+      uri: http://configServer:8256
       fail-fast: false
 
 
@@ -18,5 +18,5 @@ spring:
    profiles: dev
    cloud:   
       config: 
-         uri: http://localhost:8300
+         uri: http://configServer:8300
          fail-fast: false

@@ -16,6 +16,12 @@ loggin:
   patter:
     file: "%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %line %msg%n"   
     console: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger - %line %msg%n"
+    
+---
+
+spring:
+  rabbitmq:
+       host: centralrabbitmq    
 
      
 
