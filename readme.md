@@ -15,7 +15,8 @@
 ## Url : localhost:9411
 
 # rabbitmq
-## Url : localhost:15672
+## Url : localhost:15672 
+### url is localhost:15772 if running in docker as 15672 is used by local rabbitmq.
 
 # Inside docker everything works on the same ports . 
 
