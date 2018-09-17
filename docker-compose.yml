@@ -7,6 +7,8 @@ services:
         - "5772:5672"
       container_name: "centralrabbitmq"    
       image: "rabbitmq:3-management"
+      links:
+        - "config-server" 
   config-server:
       build: "spring-cloud-config-server/"
       image: "spring-cloud-config-server:1"
@@ -25,6 +27,8 @@ services:
       ports:
          - "9411:9411"
       container_name: "zipkinServer"
+      links:
+          - "rabbitmq"
   movie-service:
       build: "movie-service/"
       image: "movie-service:1"
