@@ -1,0 +1,65 @@
+version: "3.3"
+
+services: 
+  rabbitmq:
+      ports:
+        - "15772:15672"
+        - "5772:5672"
+      container_name: "centralrabbitmq"    
+      image: "rabbitmq:3-management"
+  config-server:
+      build: "spring-cloud-config-server/"
+      image: "spring-cloud-config-server:1"
+      ports:
+         - "8300:8300"
+      container_name: "configServer"
+  eureka-server:
+      build: "netflix-eureka-naming-server/"
+      image: "netflix-eureka-naming-server:1"
+      ports:
+         - "8761:8761"
+      container_name: "namingServer"
+  tracing-server:
+      build: "zipkin/"
+      image: "zipkin-server:1"
+      ports:
+         - "9411:9411"
+      container_name: "zipkinServer"
+  movie-service:
+      build: "movie-service/"
+      image: "movie-service:1"
+      ports:
+         - "8100:8100"
+      volumes: 
+         - "~/docker/mapped-volumes/microServicesArchitecture/movie-service1/:/root/logs/applications/movie-service/"
+      environment:
+         - "environment=dev"
+      container_name: "movie-service" 
+      links: 
+        - "rabbitmq"
+        - "config-server"
+        - "eureka-server"
+        - "tracing-server"
+  songs-service:
+      build: "songs-service/"
+      image: "songs-service:1"
+      ports:
+        - "8200:8200"
+      volumes: 
+        - "~/docker/mapped-volumes/microServicesArchitecture/songs-service1/:/root/logs/applications/songs-service/"
+      container_name: "songs-service"
+      links:
+        - "rabbitmq"
+        - "config-server"
+        - "eureka-server"
+        - "tracing-server"
+
+
+      
+
+    
+       
+       
+
+      
+      
