@@ -60,6 +60,11 @@
 		<appender-ref ref="SAVE-TO-FILE" />
 		<appender-ref ref="STDOUT" />
 	</logger>
+	
+	<logger name="com.netflix" level="debug" additivity="false">
+		<appender-ref ref="SAVE-TO-FILE" />
+		<appender-ref ref="STDOUT" />
+	</logger>
 
 	<!-- <logger name="com" level="fatal"> <appender-ref ref="STDOUT" /> </logger> -->
 

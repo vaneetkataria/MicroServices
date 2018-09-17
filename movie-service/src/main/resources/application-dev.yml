@@ -104,12 +104,8 @@ user:
 
 eureka:
   client: 
-     registerWithEureka: true
-     fetchRegistry: true
      service-url:
-           default-zone: http://admin:admin@namingServer:8761/eureka
-  instance:
-    prefer-ip-address: true      
+           default-zone: http://namingServer:8761/eureka
 
 ---
 

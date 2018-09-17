@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-  <springProperty scope="context" name="MyApplicationName" source="spring.application.name"/>
+	<springProperty scope="context" name="MyApplicationName"
+		source="spring.application.name" />
 
-<!-- Appenders Configuration -->
+	<!-- Appenders Configuration -->
 
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %green([%thread]) %highlight(%-10level) %logger{36} - Line No:%line %msg%n
+			<pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %green([%thread])
+				%highlight(%-10level) %logger{36} - Line No:%line %msg%n
 			</pattern>
 		</encoder>
 	</appender>
 
-<appender name="SAVE-TO-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${user.home}/logs/applications/${MyApplicationName}/${MyApplicationName}.log
-    </file>
-    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-        <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] [${MyApplicationName} vaneet %X{X-B3-TraceId:-}, %X{X-B3-SpanId:-}, %X{X-Span-Export:-}] %-5level %logger{36} - %line %msg%n</Pattern>
-    </encoder>
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-        <fileNamePattern>${user.home}/logs/applications/${MyApplicationName}/archived/${MyApplicationName}_%d{dd-MM-yyyy-HH}.log</fileNamePattern>
-        <maxHistory>10</maxHistory>
-        <totalSizeCap>100MB</totalSizeCap>
-    </rollingPolicy>
-</appender>
-
-
-
-	<!--  <appender name="SAVE-TO-FILE" class="ch.qos.logback.core.FileAppender">
+	<appender name="SAVE-TO-FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${user.home}/logs/applications/${MyApplicationName}/${MyApplicationName}.log
 		</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<Pattern>
-				%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %line %msg %n
-			</Pattern>
+			<Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] [${MyApplicationName}
+				vaneet %X{X-B3-TraceId:-}, %X{X-B3-SpanId:-}, %X{X-Span-Export:-}]
+				%-5level %logger{36} - %line %msg%n</Pattern>
 		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${user.home}/logs/applications/${MyApplicationName}/archived/${MyApplicationName}_%d{dd-MM-yyyy-HH}.log
+			</fileNamePattern>
+			<maxHistory>10</maxHistory>
+			<totalSizeCap>100MB</totalSizeCap>
+		</rollingPolicy>
 	</appender>
-	
-	-->
 
-	<root level="info" 
-	>
+
+
+	<!-- <appender name="SAVE-TO-FILE" class="ch.qos.logback.core.FileAppender"> 
+		<file>${user.home}/logs/applications/${MyApplicationName}/${MyApplicationName}.log 
+		</file> <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> 
+		<Pattern> %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %line 
+		%msg %n </Pattern> </encoder> </appender> -->
+
+	<root level="info">
 		<appender-ref ref="SAVE-TO-FILE" />
 		<appender-ref ref="STDOUT" />
 	</root>
@@ -58,6 +57,12 @@
 		/> </logger> -->
 
 	<logger name="com.katariasoft" level="trace" additivity="false">
+		<appender-ref ref="SAVE-TO-FILE" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+
+	<logger name="com.netflix" level="debug" additivity="false">
 		<appender-ref ref="SAVE-TO-FILE" />
 		<appender-ref ref="STDOUT" />
 	</logger>
