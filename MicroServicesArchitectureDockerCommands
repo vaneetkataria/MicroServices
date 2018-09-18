@@ -28,8 +28,7 @@ sudo docker run -p 8205:8200 -it -v ~/docker/mapped-volumes/microServicesArchite
 
 sudo docker rmi -f movie-service:1 
 sudo docker build -t movie-service:1 .
-sudo docker run -p 8100:8100 -it -v ~/docker/mapped-volumes/microServicesArchitecture/movie-service/:/tmp/ -v ~/docker/mapped-volumes/microServicesArchitecture/movie-service/:/root/logs/applications/movie-service/ --name movie-service --network microservices-architecture-network -e environment=dev movie-service:1 
-
+sudo docker run -p 8100:8100 -it -v ~/docker/mapped-volumes/microServicesArchitecture/movie-service/:/tmp/ -v ~/docker/mapped-volumes/microServicesArchitecture/movie-service/:/root/logs/applications/movie-service/ --name movie-service --network microservices-architecture-network -e environment=dev movie-service:1  --spring.cloud.config.fail-fast=true --spring.cloud.config.retry.max-interval=1000 --spring.cloud.config.retry.max-attempts=10000 
  
 
 
