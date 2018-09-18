@@ -20,5 +20,15 @@ spring:
       config: 
          uri: http://configServer:8300
          fail-fast: false
+         
+
+ 
+        
+  
+    
+      
+        
+        
+         
 
 

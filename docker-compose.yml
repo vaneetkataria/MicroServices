@@ -44,6 +44,7 @@ services:
         - "config-server"
         - "eureka-server"
         - "tracing-server"
+      command: --spring.cloud.config.fail-fast=true --spring.cloud.config.retry.max-interval=5 --spring.cloud.config.retry.max-attempts=10000
   songs-service:
       build: "songs-service/"
       image: "songs-service:1"
@@ -57,7 +58,7 @@ services:
         - "config-server"
         - "eureka-server"
         - "tracing-server"
-
+      command: --spring.cloud.config.fail-fast=true --spring.cloud.config.retry.max-interval=5 --spring.cloud.config.retry.max-attempts=10000
 
       
 
